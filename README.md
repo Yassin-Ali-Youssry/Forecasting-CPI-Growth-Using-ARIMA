@@ -74,11 +74,11 @@ Enter forecast period in months: 80
 
 ### U.S. YoY Inflation Rate
 A line chart displaying inflation trends over the specified time window.
-![YoY Inflation Rate](yoy_inflation.png)
+![YoY Inflation Rate](images/yoy_inflation.png)
 
 ### CPI Forecast (ARIMA)
 A visual of actual CPI data with future projections and uncertainty shaded.
-![CPI Forecast](cpi_forecast.png)
+![CPI Forecast](images/cpi_forecast.png)
 
 ---
 ## ⚠️ Important Considerations
