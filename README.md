@@ -55,19 +55,18 @@ pip install pandas pandas_datareader matplotlib pmdarima
 
 ### ▶️ Run the Script
 ```bash
-python Forecasting\ US\ CPI.py
-(Adjust the filename if yours differs.)
+python "Forecasting CPI Using ARIMA.py"
 ```
 ### ⌨️ Enter the Following When Prompted:
 ```bash
-Start date (YYYY-MM-DD)
-End date (YYYY-MM-DD)
+Start date (DD-MM-YYYY)
+End date (DD-MM-YYYY)
 Forecast period in months (integer)
 ```
 ### 🪄 Example Input
 ```bash
-Enter start date (YYYY-MM-DD): 2000-01-01  
-Enter end date (YYYY-MM-DD): 2024-12-30  
+Enter start date (DD-MM-YYYY): 01-01-2000  
+Enter end date (DD-MM-YYYY): 30-12-2024
 Enter forecast period in months: 80
 ```
 ## 📊 Sample Output
