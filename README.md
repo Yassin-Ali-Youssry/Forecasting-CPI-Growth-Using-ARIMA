@@ -2,33 +2,42 @@
 
 ## 🧾 Overview
 
-This project is a Python-based system for forecasting the U.S. Consumer Price Index (CPI) and analyzing inflation. It utilizes an ARIMA time series model to generate forecasts, allowing users to specify a date range for analysis and a future period for prediction.
+This project is a Python-based application for forecasting the U.S. Consumer Price Index (CPI) and analyzing inflation metrics using ARIMA time series modeling. It allows users to input a custom date range and forecast horizon, then generates CPI projections with confidence intervals, along with visualizations for key inflation trends (YoY and QoQ).
 
 ---
 
 ## ⚙️ Features
-
-- **Data Acquisition:** Downloads CPI data directly from the Federal Reserve Economic Data (FRED) using `pandas_datareader`.
-- **Data Preprocessing:**
-  - Converts the data index to datetime for time series analysis.
-  - Calculates Year-over-Year (YoY) inflation rate from CPI.
-- **Time Series Analysis:** Fits an ARIMA model using `pmdarima` with automated parameter selection.
-- **Forecasting:** Generates CPI forecasts for a user-specified number of months.
-- **Visualization:**
-  - Line plot of YoY inflation over the selected range.
-  - Line plot of historical and forecasted CPI with a shaded forecast area.
+### ✅ Data Collection & Preparation
+ - Pulls CPI data directly from FRED using pandas_datareader.
+ - Cleans and transforms time index to datetime format.
+Computes:
+- YoY Inflation: Year-over-year percentage change in CPI.
+- QoQ Inflation: Quarterly (3-month) percentage change in CPI.
+### 🧠 Forecasting Model
+- Model Type: ARIMA (AutoRegressive Integrated Moving Average)
+- Tool: pmdarima.auto_arima for automatic parameter tuning.
+- Silent model fitting to reduce console clutter using redirected output and warning suppression.
+### 📊 Visualization Suite
+Combined dashboard includes:
+- Top-left: Year-over-Year Inflation line chart.
+- Top-right: Quarter-over-Quarter Inflation chart.
+- Bottom (Full Width): Historical CPI + Forecast with shaded confidence intervals.
+### 🔎 (Optional) Residual Diagnostics (currently commented)
+- ARIMA residual analysis tools:
+- Residual time series plot
+- ACF & PACF charts
+- Ljung-Box test for autocorrelation
 
 ---
 
 ## 🛠️ Technologies Used
-
-- Python
-- pandas  
-- pandas_datareader  
-- matplotlib  
-- pmdarima  
-- os  
-- sys  
+- Python 3.6+
+- pandas
+- pandas_datareader
+- matplotlib
+- pmdarima
+- statsmodels
+- os, sys, warnings
 
 ---
 
@@ -48,7 +57,7 @@ cd Forecasting-US-CPI-Inflation-ARIMA-Model
 
 ### 📥 Install Requirements
 ```bash
-pip install pandas pandas_datareader matplotlib pmdarima
+pip install pandas pandas_datareader matplotlib pmdarima statsmodels
 ```
 ---
 ## 🚀 Usage
@@ -70,34 +79,26 @@ Enter end date (DD-MM-YYYY): 30-12-2024
 Enter forecast period in months: 80
 ```
 ## 📊 Sample Output
-
-### U.S. YoY Inflation Rate
-A line chart displaying inflation trends over the specified time window.
-![YoY Inflation Rate](images/yoy_inflation.png)
-
-### CPI Forecast (ARIMA)
-A visual of actual CPI data with future projections and uncertainty shaded.
-![CPI Forecast](images/cpi_forecast.png)
+![YoY Inflation Rate](images/Sample_Output_for_CPI_Inflation.png)
 
 ---
 ## ⚠️ Important Considerations
 
-Data Source: Requires internet access to fetch FRED data.
-ARIMA Selection: Model parameters are selected automatically via auto_arima.
-Forecast Accuracy: Results depend on historical patterns. Use caution and update periodically.
-Error Handling: Basic validation exists, but production-level robustness can be improved.
+Live Data: Internet is required to pull up-to-date data from FRED.
+Model Selection: auto_arima selects best-fit parameters without manual tuning.
+Forecast Horizon: Longer horizons may produce wider confidence intervals and higher uncertainty.
+Residual Analysis: Tools for diagnostics are available but currently commented. Enable them to assess model adequacy.
 
 ---
 ## 🔮 Future Enhancements
 
-Incorporate other economic indicators (e.g., interest rates, unemployment).
-Add support for other models (SARIMA, Prophet, etc.).
-Allow user-defined ARIMA parameters.
-Export plots to file (PNG, PDF).
-Develop an interactive dashboard (Dash or Streamlit).
-Add model evaluation metrics (AIC, BIC, out-of-sample tests).
-Include unit testing for reliability.
-Implement stronger input validation.
+ Add SARIMA, Prophet, or LSTM model options
+ Integrate other macroeconomic variables (e.g., interest rates, unemployment)
+ Export charts as images (PNG, PDF) automatically
+ Deploy Streamlit dashboard version
+ Log and visualize model evaluation metrics (AIC, BIC, MSE)
+ Add unit testing and exception handling
+ Improve input validation (e.g., format checks, date ranges)
 
 ---
 ## 🤝 Contributing
